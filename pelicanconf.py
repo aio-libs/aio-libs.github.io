@@ -18,6 +18,7 @@ AUTHORS_SAVE_AS = "author/index.html"
 CATEGORY_URL = "category/{slug}/"
 CATEGORY_SAVE_AS = "category/{slug}/index.html"
 CATEGORIES_SAVE_AS = "category/index.html"
+INDEX_SAVE_AS = "news/index.html"
 PAGE_URL = "p/{slug}/"
 PAGE_SAVE_AS = "p/{slug}/index.html"
 TAG_URL = "tag/{slug}/"
@@ -32,6 +33,10 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+
+# Plugins
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = []
 
 # Theme
 #THEME = "theme"
