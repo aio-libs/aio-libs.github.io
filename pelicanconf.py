@@ -36,7 +36,7 @@ AUTHOR_FEED_RSS = None
 
 # Plugins
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = []
+PLUGINS = ["linkclass"]
 
 # Theme
 #THEME = "theme"
