@@ -55,5 +55,3 @@ PAGINATION_PATTERNS = (
 
 
 # TODO: Assert date included in all article filenames.
-# Test SITEURL vs. FEED_DOMAIN
-# https://docs.getpelican.com/en/latest/settings.html#using-pagination-patterns
