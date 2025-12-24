@@ -1,14 +1,23 @@
-AUTHOR = 'aio-libs'
-SITENAME = 'aio-libs'
+SITENAME = "aio-libs"
 SITEURL = ""
 SUMMARY_MAX_PARAGRAPHS = 1
 
-PATH = "content"
 ARTICLE_PATHS = ["news"]
+PATH = "content"
 
-TIMEZONE = 'UTC'
+LOCALE = "en"
 
-DEFAULT_LANG = 'en'
+# URL settings
+ARTICLE_URL = "news/{date:%Y}/{slug}/"
+ARTICLE_SAVE_AS = "news/{date:%Y}/{slug}.html"
+AUTHOR_URL = "author/{slug}/"
+CATEGORY_URL = "category/{slug}/"
+PAGE_URL = "{slug}/"
+PAGE_SAVE_AS = "{slug}.html"
+SLUGIFY_SOURCE = "basename"
+TAG_URL = "tag/{slug}/"
+YEAR_ARCHIVE_SAVE_AS = "news/{date:%Y}/index.html"
+YEAR_ARCHIVE_URL = "news/{date:%Y}/"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -17,21 +26,28 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
+# Theme
+#THEME = "theme"
+# TODO: LINKS/SOCIAL
 LINKS = (
     ("Pelican", "https://getpelican.com/"),
     ("Python.org", "https://www.python.org/"),
     ("Jinja2", "https://palletsprojects.com/p/jinja/"),
     ("You can modify those links in your config file", "#"),
 )
-
-# Social widget
 SOCIAL = (
     ("You can add links in your config file", "#"),
     ("Another social link", "#"),
 )
 
 DEFAULT_PAGINATION = 10
+PAGINATED_TEMPLATES = {"index": None, "tag": None, "category": None, "author": 5}
+PAGINATION_PATTERNS = (
+    (1, "{url}", "{save_as}"),
+    (2, "{base_name}/{number}/", "{base_name}/{number}/index.html"),
+)
 
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+
+# TODO: Assert date included in all article filenames.
+# Test SITEURL vs. FEED_DOMAIN
+# https://docs.getpelican.com/en/latest/settings.html#using-pagination-patterns
