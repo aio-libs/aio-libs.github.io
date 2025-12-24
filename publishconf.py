@@ -12,7 +12,7 @@ RELATIVE_URLS = False
 TYPOGRIFY = True
 TYPOGRIFY_OMIT_FILTERS = ["amp", "caps", "initial_quotes", "widont"]
 
-FEED_DOMAIN = "aio-libs.org"
+FEED_DOMAIN = "https://aio-libs.org"
 FEED_ATOM = "feeds/atom.xml"
 FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
