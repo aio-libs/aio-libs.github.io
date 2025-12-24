@@ -5,7 +5,7 @@ SUMMARY_MAX_PARAGRAPHS = 1
 ARTICLE_PATHS = ["news"]
 PATH = "content"
 
-LOCALE = "en_US"
+LOCALE = "en_US.utf8"
 TIMEZONE = "UTC"
 
 # URL settings
@@ -53,6 +53,3 @@ PAGINATION_PATTERNS = (
     (1, "{url}", "{save_as}"),
     (2, "{base_name}/{number}/", "{base_name}/{number}/index.html"),
 )
-
-
-# TODO: Assert date included in all article filenames.
