@@ -5,7 +5,8 @@ SUMMARY_MAX_PARAGRAPHS = 1
 ARTICLE_PATHS = ["news"]
 PATH = "content"
 
-LOCALE = "en"
+LOCALE = "en_US"
+TIMEZONE = "UTC"
 
 # URL settings
 FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
