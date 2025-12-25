@@ -59,3 +59,8 @@ PAGINATION_PATTERNS = (
     (1, "{url}", "{save_as}"),
     (2, "{base_name}/{number}/", "{base_name}/{number}/index.html"),
 )
+
+LOG_FILTER = (
+    # Remove when fixed: https://github.com/getpelican/pelican/pull/3544
+    (logging.WARN, "Feeds generated without SITEURL set properly may not be valid"),
+)
