@@ -12,7 +12,7 @@ TIMEZONE = "UTC"
 
 # URL settings
 FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
-PATH_METADATA = r"pages/(?P<prefix>[^/]+/)?/.*"
+PATH_METADATA = r"pages/(?P<prefix>([^/]+/)|).*"
 ARTICLE_URL = "news/{date:%Y}/{slug}/"
 ARTICLE_SAVE_AS = "news/{date:%Y}/{slug}/index.html"
 AUTHOR_URL = "author/{slug}/"
