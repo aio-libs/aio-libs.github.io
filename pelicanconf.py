@@ -1,3 +1,5 @@
+import logging
+
 SITENAME = "aio-libs"
 SITEURL = ""
 SUMMARY_MAX_PARAGRAPHS = 1
