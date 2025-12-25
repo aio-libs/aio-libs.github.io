@@ -65,4 +65,6 @@ PAGINATION_PATTERNS = (
 LOG_FILTER = (
     # Remove when fixed: https://github.com/getpelican/pelican/pull/3544
     (logging.WARN, "Feeds generated without SITEURL set properly may not be valid"),
+    # Alt tag is explicit in Markdown, so this warning doesn't make sense.
+    (logging.WARN, "Empty alt attribute for image %s in %s"),
 )
