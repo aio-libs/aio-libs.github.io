@@ -8,17 +8,9 @@ on:
 permissions: {}
 
 jobs:
-  deploy:
+  build:
     permissions:
       contents: read
-      pages: write
-      id-token: write
-    concurrency:
-      group: "pages"
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,14 +26,56 @@ jobs:
         with:
           path: requirements.txt
       - name: Build site
-        run: python3 -We -m pelican -s publishconf.py
+        run: python3 -We -m pelican --fatal warnings -s publishconf.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'output/'
+
+  deploy_preview:
+    if: "github.event_name == 'pull_request'"
+    runs-on: "ubuntu-latest"
+    needs: "build"
+    permissions:
+      pull-requests: write  # For comments in PRs
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v3
+        with:
+          # The name of artifacts created by `actions/upload-pages-artifact` is always "github-pages"
+          name: github-pages
+          path: 'output/'
+      - name: Untar site artifact
+        run: tar --directory output/ -xvf output/artifact.tar
+      - name: Deploy preview to Netlify
+        uses: nwtgck/actions-netlify@v2
+        env:
+          NETLIFY_SITE_ID: "${{ secrets.NETLIFY_SITE_ID }}"
+          NETLIFY_AUTH_TOKEN: "${{ secrets.NETLIFY_AUTH_TOKEN }}"
+        with:
+          publish-dir: 'output/'
+          production-deploy: false
+          #github-token: "${{ secrets.GITHUB_TOKEN }}"
+          #deploy-message: "Deploy from GHA: ${{ github.event.pull_request.title }}"
+          #alias: "pr-${{ github.event.pull_request.number }}-preview"
+        timeout-minutes: 1
+
+  deploy:
+    if: "github.event_name == 'push'"
+    runs-on: "ubuntu-latest"
+    needs: "build"
+    permissions:
+      id-token: write  # to verify the deployment originates from an appropriate source
+      pages: write
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
