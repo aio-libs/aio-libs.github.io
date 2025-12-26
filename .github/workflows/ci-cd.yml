@@ -5,7 +5,8 @@ on:
   push:
     branches: ["master"]
 
-permissions: {}
+permissions:
+  pull-requests: write  # For comments in PRs
 
 jobs:
   build:
@@ -38,8 +39,6 @@ jobs:
     if: "github.event_name == 'pull_request'"
     runs-on: "ubuntu-latest"
     needs: "build"
-    permissions:
-      pull-requests: write  # For comments in PRs
     steps:
       - name: Download site artifact
         uses: actions/download-artifact@v4
