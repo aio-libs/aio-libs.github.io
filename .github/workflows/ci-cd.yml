@@ -56,10 +56,6 @@ jobs:
           NETLIFY_AUTH_TOKEN: "${{ secrets.NETLIFY_AUTH_TOKEN }}"
         with:
           publish-dir: 'output/'
-          production-deploy: false
-          #github-token: "${{ secrets.GITHUB_TOKEN }}"
-          #deploy-message: "Deploy from GHA: ${{ github.event.pull_request.title }}"
-          #alias: "pr-${{ github.event.pull_request.number }}-preview"
         timeout-minutes: 1
 
   deploy:
