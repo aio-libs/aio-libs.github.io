@@ -5,8 +5,7 @@ on:
   push:
     branches: ["master"]
 
-permissions:
-  pull-requests: write  # For comments in PRs
+permissions: {}
 
 jobs:
   build:
@@ -27,7 +26,7 @@ jobs:
         with:
           path: requirements.txt
       - name: Build site
-        run: python3 -We -m pelican -s publishconf.py
+        run: pelican --fatal warnings -s publishconf.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -39,6 +38,8 @@ jobs:
     if: "github.event_name == 'pull_request'"
     runs-on: "ubuntu-latest"
     needs: "build"
+    permissions:
+      pull-requests: write  # For comments in PRs
     steps:
       - name: Download site artifact
         uses: actions/download-artifact@v4
