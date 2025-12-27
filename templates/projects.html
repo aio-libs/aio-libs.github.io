@@ -10,7 +10,6 @@
         <img src="{{ image.thumbnail(320)|url }}" alt="">
       {% endif %}
       <h2><a href="{{ project|url }}">{{ project.name }}</a>
-        <em>({{ project.date.year }})</em></h2>
       <p><strong>{{ project.type }}</strong></p>
     </div>
   {% endfor %}

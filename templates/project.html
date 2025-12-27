@@ -1,10 +1,8 @@
 {% extends "layout.html" %}
-{% block title %}{{ this.name }} ({{ this.date.year }}){% endblock %}
+{% block title %}{{ this.name }}{% endblock %}
 {% block body %}
   <h1>{{ this.name }}</h1>
   <dl>
-    <dt>Date
-    <dd>{{ this.date|dateformat }}
     {% if this.website %}
     <dt>Website
     <dd><a href="{{ this.website }}">{{ this.website.host }}</a>
