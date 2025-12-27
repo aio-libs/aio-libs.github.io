@@ -1,0 +1,43 @@
+title: Aiohttp
+---
+body:
+
+![](/images/aiohttp.svg)
+
+An asynchronous HTTP Client/Server for asyncio and Python.
+
+Client example:
+
+    :::python
+    import aiohttp
+    import asyncio
+
+    async def main():
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get('http://python.org') as response:
+
+                print("Status:", response.status)
+                print("Content-type:", response.headers['content-type'])
+
+                html = await response.text()
+                print("Body:", html[:15], "...")
+
+    asyncio.run(main())
+
+Server example:
+
+    :::python
+    from aiohttp import web
+
+    async def handle(request):
+        name = request.match_info.get('name', "Anonymous")
+        text = "Hello, " + name
+        return web.Response(text=text)
+
+    app = web.Application()
+    app.add_routes([web.get('/', handle),
+                    web.get('/{name}', handle)])
+
+    if __name__ == '__main__':
+        web.run_app(app)
