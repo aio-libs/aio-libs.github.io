@@ -42,7 +42,6 @@ PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass",)
 
 # Theme
-STYLESHEET_URL = "static/css/main.css"
 THEME = "theme/"
 # TODO: LINKS/SOCIAL
 LINKS = (
