@@ -4,7 +4,7 @@ SITENAME = "aio-libs"
 SITEURL = ""
 SUMMARY_MAX_PARAGRAPHS = 1
 
-ARTICLE_PATHS = ["news"]
+ARTICLE_PATHS = ("news",)
 PATH = "content"
 
 LOCALE = "en_US.utf8"
@@ -12,7 +12,6 @@ TIMEZONE = "UTC"
 
 # URL settings
 FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
-PATH_METADATA = r"pages/(?P<prefix>([^/]+/)|)(?P<slug>.*)"
 ARTICLE_URL = "news/{date:%Y}/{slug}/"
 ARTICLE_SAVE_AS = "news/{date:%Y}/{slug}/index.html"
 AUTHOR_URL = "author/{slug}/"
@@ -22,6 +21,7 @@ CATEGORY_URL = "category/{slug}/"
 CATEGORY_SAVE_AS = "category/{slug}/index.html"
 CATEGORIES_SAVE_AS = "category/index.html"
 INDEX_SAVE_AS = "news/index.html"
+PATH_METADATA = r"pages/(?P<prefix>([^/]+/)|)(?P<slug>.*)"
 PAGE_URL = "{prefix}{slug}/"
 PAGE_SAVE_AS = "{prefix}{slug}/index.html"
 TAG_URL = "tag/{slug}/"
@@ -38,11 +38,11 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Plugins
-PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["linkclass"]
+PLUGIN_PATHS = ("plugins",)
+PLUGINS = ("linkclass",)
 
 # Theme
-#THEME = "theme"
+THEME = "simple"
 # TODO: LINKS/SOCIAL
 LINKS = (
     ("Pelican", "https://getpelican.com/"),
