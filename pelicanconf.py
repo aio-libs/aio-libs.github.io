@@ -42,7 +42,7 @@ PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass",)
 
 # Theme
-THEME = "simple"
+THEME = "theme/"
 # TODO: LINKS/SOCIAL
 LINKS = (
     ("Pelican", "https://getpelican.com/"),
