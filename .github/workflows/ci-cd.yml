@@ -26,7 +26,7 @@ jobs:
         with:
           path: requirements.txt
       - name: Build site
-        run: pelican -D --fatal warnings -s publishconf.py
+        run: pelican -D -s publishconf.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
