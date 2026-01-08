@@ -1,28 +1,18 @@
 {% extends "!simple/base.html" %}
 
 {% block head %}
-    <title>{% block title %}{{ SITENAME|striptags }}{% endblock title %}</title>
-    <meta charset="utf-8" />
-    <meta name="generator" content="Pelican" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if THEME_STYLESHEET_URL %}
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/aio-libs-theme.css" />
-    {% endif %}
-
-    {% if THEME_USE_HIGHLIGHT %}
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/highlight.min.css">
-        <script src="{{ SITEURL }}/theme/javascript/highlight.min.js"></script>
+        {{ super() }}
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/highlight.min.css" />
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>
-    {% endif %}
 {% endblock head %}
 
 {% block body %}
     <div class="aio-pattern"></div>
     <main class="aio-wrapper">
         <section class="aio-nav">
-        {% block header %}
-            <hgroup></hgroup><h1 class="aio-title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>{% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}</hgroup>
-        {% endblock header %}
+        {% block header %}{{ super() }}{% endblock header %}
         {% block nav %}
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% if pages %}
