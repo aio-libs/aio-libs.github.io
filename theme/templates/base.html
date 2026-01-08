@@ -18,7 +18,7 @@
                 {% if pages %}
                 <ul class="aio-nav__list">
                     {% for p in pages if not p.url.startswith("/projects/") %}
-                        <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                        <li><a class="aio-nav__link" href="{{ SITEURL }}/a{{ p.url }}a{{ p.prefix }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}
