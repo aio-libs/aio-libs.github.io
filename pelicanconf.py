@@ -1,7 +1,8 @@
 import logging
 
 SITENAME = "aio-libs"
-SITEURL = ""
+# PROBABLY WANT TO DO SOMETHING WITH SITEURL SAM
+SITEURL = "http://127.0.0.1:8000/"
 SUMMARY_MAX_PARAGRAPHS = 1
 
 ARTICLE_PATHS = ("news",)
@@ -43,13 +44,23 @@ PLUGINS = ("linkclass",)
 
 # Theme
 THEME = "theme/"
-# TODO: LINKS/SOCIAL
+THEME_STYLESHEET_URL = "/theme/css/aio-libs-theme.css"
+THEME_USE_HIGHLIGHT = True
+
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = True
+DISPLAY_SPONSORS_ON_MENU = True
+SPONSORS = [
+    ("Bill Gates", 'http://google.com'), 
+    ("TerenceCorp", 'http://google.com')
+]
+DISPLAY_LINKS_ON_MENU = True
 LINKS = (
     ("Pelican", "https://getpelican.com/"),
     ("Python.org", "https://www.python.org/"),
-    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-    ("You can modify those links in your config file", "#"),
+    ("Jinja2", "https://palletsprojects.com/p/jinja/")
 )
+
 SOCIAL = (
     ("You can add links in your config file", "#"),
     ("Another social link", "#"),

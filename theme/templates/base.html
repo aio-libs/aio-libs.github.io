@@ -1,25 +1,76 @@
 {% extends "!simple/base.html" %}
 
-
 {% block head %}
-{{ super() }}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
-{% endblock %}
+    <title>{% block title %}{{ SITENAME|striptags }}{% endblock title %}</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Pelican" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if THEME_STYLESHEET_URL %}
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/aio-libs-theme.css" />
+    {% endif %}
 
-{% block nav %}
-          <nav><ul>
-            {% for title, link in MENUITEMS %}
-              <li><a href="{{ link }}">{{ title }}</a></li>
-            {% endfor %}
+    {% if THEME_USE_HIGHLIGHT %}
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/highlight.min.css">
+        <script src="{{ SITEURL }}/theme/javascript/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    {% endif %}
+{% endblock head %}
+
+{% block body %}
+    <div class="aio-pattern"></div>
+    <main class="aio-wrapper">
+        <section class="aio-nav">
+        {% block header %}
+            <hgroup></hgroup><h1 class="aio-title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>{% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}</hgroup>
+        {% endblock header %}
+        {% block nav %}
             {% if DISPLAY_PAGES_ON_MENU %}
-              {% for p in pages %}
-                <li><a href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
-              {% endfor %}
+                {% if pages %}
+                <ul class="aio-nav__list" aria-label="Pages">
+                    {% for p in pages %}
+                        <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             {% endif %}
             {% if DISPLAY_CATEGORIES_ON_MENU %}
-              {% for cat, null in categories %}
-                <li><a href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
-              {% endfor %}
+                {% if categories %}
+                <ul class="aio-nav__list" aria-label="Categories">
+                    {% for cat, null in categories %}
+                        <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             {% endif %}
-          </ul></nav>
-{% endblock nav %}
+            {% if DISPLAY_SPONSORS_ON_MENU %}
+                {% if SPONSORS %}
+                <ul class="aio-nav__list" aria-label="Sponsors">
+                    {% for sponsor, null in SPONSORS %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ sponsor.url }}">{{ sponsor }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endif %}
+            {% if DISPLAY_LINKS_ON_MENU %}
+                {% if LINKS %}
+                <ul class="aio-nav__list" aria-label="Links">
+                    {% for title, link in LINKS %}
+                    <li><a class="aio-nav__link" href="{{ link }}">{{ title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endif %}
+        {% endblock nav %}
+        </section>
+        <section class="aio-content">
+            {% block content %}
+            {% endblock content %}
+        </section>
+    </main>
+
+    {% block footer %}
+        <footer>
+        </footer>
+    {% endblock footer %}
+
+{% endblock body %}
