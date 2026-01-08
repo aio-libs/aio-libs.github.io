@@ -17,14 +17,14 @@
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% if pages %}
                 <ul class="aio-nav__list">
-                    {% for p in pages if not p.url.startswith("/projects/") %}
-                        <li><a class="aio-nav__link" href="{{ SITEURL }}/a{{ p.url }}a{{ p.prefix }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                    {% for p in pages if not p.prefix == "projects/") %}
+                        <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}
             {% endif %}
             <ul class="aio-nav__list" aria-label="Projects">
-                {% for p in pages if p.url.startswith("/projects/") %}
+                {% for p in pages if p.prefix == "projects/" %}
                     <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                 {% endfor %}
             </ul>
