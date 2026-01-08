@@ -16,13 +16,18 @@
         {% block nav %}
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% if pages %}
-                <ul class="aio-nav__list" aria-label="Pages">
-                    {% for p in pages %}
+                <ul class="aio-nav__list">
+                    {% for p in pages if not p.url.startswith("/projects/") %}
                         <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}
             {% endif %}
+            <ul class="aio-nav__list" aria-label="Projects">
+                {% for p in pages if p.url.startswith("/projects/") %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                {% endfor %}
+            </ul>
             {% if DISPLAY_CATEGORIES_ON_MENU %}
                 {% if categories %}
                 <ul class="aio-nav__list" aria-label="Categories">
