@@ -17,7 +17,7 @@
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% if pages %}
                 <ul class="aio-nav__list">
-                    {% for p in pages if not p.prefix == "projects/") %}
+                    {% for p in pages if not p.prefix == "projects/" %}
                         <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                     {% endfor %}
                 </ul>
