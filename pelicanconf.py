@@ -3,16 +3,13 @@ import re
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
-from markupsafe import Markup
-from markdown import Markdown
-from markdown.extensions import Extension
 from markdown.extensions.admonition import AdmonitionExtension
 from markdown.extensions.codehilite import CodeHiliteExtension
 from markdown.extensions.meta import MetaExtension
 from markdown.extensions.smarty import SmartyExtension
 from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
-from markdown.inlinepatterns import InlineProcessor
+from markdown.preprocessors import Preprocessor
 from pelican.plugins.liquid_tags import LiquidTags
 
 jinja_fragments = Environment(loader=FileSystemLoader("theme/templates/fragments/"))
@@ -20,28 +17,16 @@ sponsor_template = jinja_fragments.get_template("sponsor.html")
 SPONSOR_IMG_PATH = Path("content/images/sponsors/")
 
 
-def sponsor_img(name: str):
+def sponsor_img(name: str) -> str:
+    """Return the image path for a given sponsor name."""
     name = name.lower().replace(" ", "-")
     f = next(SPONSOR_IMG_PATH.glob(name + ".*"))
     return "/images/sponsors/" + f.name
 
 
-class SponsorInlineProcessor(InlineProcessor):
-    def handleMatch(self, m: re.Match[str], data: str) -> tuple[str, int, int]:
-        return sponsor_template.render(SPONSORS=SPONSORS), m.start(0), m.end(0)
-
-
-class SponsorExtension(Extension):
-    def extendMarkdown(self, md: Markdown) -> None:
-        processor = SponsorInlineProcessor(r'\[\[SPONSORS\]\]', md)
-        md.inlinePatterns.register(processor, "sponsor", 200)
-
-
 @LiquidTags.register("sponsors")
-def sponsors(preprocessor, tag, markup):
-    txt = sponsor_template.render(SPONSORS=SPONSORS)
-    print(txt)
-    return txt
+def sponsors(preprocessor: Preprocessor, tag: str, markup: str) -> str:
+    return sponsor_template.render(SPONSORS=SPONSORS)
 
 
 SITENAME = "aio-libs"
@@ -90,7 +75,6 @@ AUTHOR_FEED_RSS = None
 # Plugins
 PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass", "liquid_tags")
-#LIQUID_TAGS = ("img",)
 MARKDOWN = {
     "extensions": [
         "extra",
@@ -100,7 +84,6 @@ MARKDOWN = {
         SmartyExtension(),
         TocExtension(),
         WikiLinkExtension(base_url="/projects/", html_class=None),
-        SponsorExtension(),
     ],
 }
 
