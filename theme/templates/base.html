@@ -3,9 +3,7 @@
 {% block head %}
         {{- super() }}
         <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/highlight.min.css" />
-        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script>
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygment.css" />
 {%- endblock head %}
 
 {% block body %}
