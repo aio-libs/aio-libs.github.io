@@ -27,6 +27,8 @@ jobs:
           path: requirements.txt
       - name: Build site
         run: pelican -D -s publishconf.py
+      - name: Build Pygments CSS
+        run: pygmentize -f html -a .highlight > output/theme/static/css/pygment.css
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
