@@ -3,7 +3,6 @@ import re
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
-from markupsafe import Markup
 from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.extensions.admonition import AdmonitionExtension
@@ -13,6 +12,7 @@ from markdown.extensions.smarty import SmartyExtension
 from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown.inlinepatterns import InlineProcessor
+from pelican.plugins.liquid_tags import LiquidTags
 
 jinja_fragments = Environment(loader=FileSystemLoader("theme/templates/fragments/"))
 sponsor_template = jinja_fragments.get_template("sponsor.html")
@@ -26,14 +26,19 @@ def sponsor_img(name: str):
 
 
 class SponsorInlineProcessor(InlineProcessor):
-    def handleMatch(self, m: re.Match[str], data: str) -> tuple[Markup, int, int]:
-        return Markup(sponsor_template.render(SPONSORS=SPONSORS), m.start(0), m.end(0))
+    def handleMatch(self, m: re.Match[str], data: str) -> tuple[str, int, int]:
+        return sponsor_template.render(SPONSORS=SPONSORS), m.start(0), m.end(0)
 
 
 class SponsorExtension(Extension):
     def extendMarkdown(self, md: Markdown) -> None:
         processor = SponsorInlineProcessor(r'\[\[SPONSORS\]\]', md)
         md.inlinePatterns.register(processor, "sponsor", 200)
+
+
+@LiquidTags.register("sponsors")
+def sponsors(preprocessor, tag, markup):
+    return sponsor_template.render(SPONSORS=SPONSORS)
 
 
 SITENAME = "aio-libs"
@@ -81,7 +86,8 @@ AUTHOR_FEED_RSS = None
 
 # Plugins
 PLUGIN_PATHS = ("plugins",)
-PLUGINS = ("linkclass",)
+PLUGINS = ("linkclass", "liquid_tags")
+LIQUID_TAGS = ("sponsors",)
 MARKDOWN = {
     "extensions": [
         "extra",
