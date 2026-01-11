@@ -8,8 +8,6 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 RELATIVE_URLS = False
-TYPOGRIFY = True
-TYPOGRIFY_OMIT_FILTERS = ("amp", "caps", "initial_quotes", "widont",)
 
 FEED_DOMAIN = "https://aio-libs.org"
 FEED_ATOM = "feeds/atom.xml"

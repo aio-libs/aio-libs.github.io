@@ -1,4 +1,41 @@
 import logging
+import re
+from pathlib import Path
+
+from jinja2 import Environment, FileSystemLoader
+from markdown import Markdown
+from markdown.extensions import Extension
+from markdown.extensions.admonition import AdmonitionExtension
+from markdown.extensions.meta import MetaExtension
+from markdown.extensions.smart import SmartyExtension
+from markdown.extensions.toc import TocExtension
+from markdown.extensions.wikilinks import WikiLinkExtension
+from markdown.inlinepatterns import InlineProcessor
+
+jinja_fragments = Environment(
+    loader=FileSystemLoader("theme/templates/fragments/"),
+    autoescape=select_autoescape()
+)
+sponsor_template = jinja_fragments.get_template("sponsor.html")
+SPONSOR_IMG_PATH = Path("content/images/sponsors/")
+
+
+def sponsor_img(name: str):
+    name = name.lower().replace(" ", "-")
+    f = next(SPONSOR_IMG_PATH.glob(name + ".*"))
+    return "/images/sponsors/" + f.name
+
+
+class SponsorInlineProcessor(InlineProcessor):
+    def handleMatch(self, m: re.Match[str], data: str) -> tuple[str, int, int]:
+        return sponsor_template.render(SPONSORS=SPONSORS), m.start(0), m.end(0)
+
+
+class SponsorExtension(Extension):
+    def extendMarkdown(self, md: Markdown) -> None:
+        processor = SponsorInlineProcessor(r'\[\[SPONSORS\]\]', md)
+        md.inlinePatterns.register(processor, "sponsor", 200)
+
 
 SITENAME = "aio-libs"
 SITEURL = ""
@@ -10,10 +47,11 @@ PATH = "content"
 LOCALE = "en_US.utf8"
 TIMEZONE = "UTC"
 
-SPONSORS = (
-    ("Bill Gates", "http://google.com"), 
-    ("TerenceCorp", "http://google.com")
+_SPONSORS = (
+    ("Tidelift", "https://tidelift.com/"),
+    ("Open Home Foundation", "https://www.openhomefoundation.org/"),
 )
+SPONSORS = tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS)
 
 # URL settings
 FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
@@ -45,6 +83,17 @@ AUTHOR_FEED_RSS = None
 # Plugins
 PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass",)
+MARKDOWN = {
+    "extensions": (
+        "extra",
+        AdmonitionExtension(),
+        MetaExtension(),
+        SmartyExtension(),
+        TocExtension(),
+        WikiLinkExtension(base_url="/projects/", html_class=None),
+        SponsorExtension(),
+    ),
+}
 
 # Theme
 THEME = "theme/"

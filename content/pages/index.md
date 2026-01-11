@@ -8,11 +8,7 @@ We are a co-operative of developers who maintain open-source libraries for the P
 
 Asyncio would not be possible without our amazing sponsors. Please consider joining them to help fund our work. Our finances are entirely transparent and managed by [Open Collective](https://opencollective.com/aio-libs).
 
-> ### Sponsor Card
-> ![]({static}/images/aiohttp.svg)
-> Blockquotes can be used for featured content blocks I guess. Nice to keep things simple, especially these days am I right?
->
-> I usually am.
+[SPONSORS]
 
 ### Asyncio Cooperative (Totally Fictional)
 
