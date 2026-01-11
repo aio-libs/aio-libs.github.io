@@ -26,7 +26,7 @@ jobs:
         with:
           path: requirements.txt
       - name: Build site
-        run: pelican -D -s publishconf.py
+        run: pelican -s publishconf.py
       - name: Build Pygments CSS
         run: pygmentize -S default -f html > output/theme/css/pygment.css
       - name: Setup Pages

@@ -39,7 +39,9 @@ class SponsorExtension(Extension):
 
 @LiquidTags.register("sponsors")
 def sponsors(preprocessor, tag, markup):
-    return Markup(sponsor_template.render(SPONSORS=SPONSORS))
+    txt = sponsor_template.render(SPONSORS=SPONSORS)
+    print(txt)
+    return txt
 
 
 SITENAME = "aio-libs"
@@ -88,7 +90,7 @@ AUTHOR_FEED_RSS = None
 # Plugins
 PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass", "liquid_tags")
-LIQUID_TAGS = ("img",)
+#LIQUID_TAGS = ("img",)
 MARKDOWN = {
     "extensions": [
         "extra",
