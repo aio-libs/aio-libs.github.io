@@ -12,6 +12,8 @@ Asyncio would not be possible without our amazing sponsors. Please consider join
 
 {% sponsors %}
 
+[[SPONSORS]]
+
 ### Asyncio Cooperative (Totally Fictional)
 
 Welcome to the **Asyncio Cooperative**, a completely made-up, not-real, absolutely placeholder homepage for a co-operative of developers who *pretend* to maintain open-source libraries in the Python `asyncio` ecosystem, including `aiohttp`. None of this text should be taken seriously. It exists only as illustrative filler and friendly nonsense.
