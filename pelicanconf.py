@@ -6,6 +6,7 @@ from jinja2 import Environment, FileSystemLoader
 from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.extensions.admonition import AdmonitionExtension
+from markdown.extensions.codehilite import CodeHiliteExtension
 from markdown.extensions.meta import MetaExtension
 from markdown.extensions.smarty import SmartyExtension
 from markdown.extensions.toc import TocExtension
@@ -84,6 +85,7 @@ MARKDOWN = {
     "extensions": [
         "extra",
         AdmonitionExtension(),
+        CodeHiliteExtension(),
         MetaExtension(),
         SmartyExtension(),
         TocExtension(),
