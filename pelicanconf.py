@@ -12,7 +12,7 @@ from markdown.extensions.smarty import SmartyExtension
 from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown.inlinepatterns import InlineProcessor
-from pelican.plugins.liquid_tags import LiquidTags
+from liquid_tags import LiquidTags
 
 jinja_fragments = Environment(loader=FileSystemLoader("theme/templates/fragments/"))
 sponsor_template = jinja_fragments.get_template("sponsor.html")
