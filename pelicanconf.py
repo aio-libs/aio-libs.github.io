@@ -7,7 +7,7 @@ from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.extensions.admonition import AdmonitionExtension
 from markdown.extensions.meta import MetaExtension
-from markdown.extensions.smart import SmartyExtension
+from markdown.extensions.smarty import SmartyExtension
 from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown.inlinepatterns import InlineProcessor
