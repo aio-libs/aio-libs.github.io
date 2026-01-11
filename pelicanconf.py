@@ -84,8 +84,8 @@ PLUGINS = ("linkclass",)
 MARKDOWN = {
     "extensions": [
         "extra",
+        "markdown.extensions.codehilite",
         AdmonitionExtension(),
-        CodeHiliteExtension(),
         MetaExtension(),
         SmartyExtension(),
         TocExtension(),
