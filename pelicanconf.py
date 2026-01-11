@@ -88,7 +88,7 @@ AUTHOR_FEED_RSS = None
 # Plugins
 PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass", "liquid_tags")
-#LIQUID_TAGS = ("sponsors",)
+LIQUID_TAGS = ("img",)
 MARKDOWN = {
     "extensions": [
         "extra",

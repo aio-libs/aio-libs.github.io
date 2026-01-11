@@ -8,6 +8,8 @@ We are a co-operative of developers who maintain open-source libraries for the P
 
 Asyncio would not be possible without our amazing sponsors. Please consider joining them to help fund our work. Our finances are entirely transparent and managed by [Open Collective](https://opencollective.com/aio-libs).
 
+{% img /images/sponsors/tidelift.svg %}
+
 {% sponsors %}
 
 ### Asyncio Cooperative (Totally Fictional)
