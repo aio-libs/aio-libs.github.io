@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
+from markupsafe import Markup
 from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.extensions.admonition import AdmonitionExtension
@@ -25,8 +26,8 @@ def sponsor_img(name: str):
 
 
 class SponsorInlineProcessor(InlineProcessor):
-    def handleMatch(self, m: re.Match[str], data: str) -> tuple[str, int, int]:
-        return sponsor_template.render(SPONSORS=SPONSORS), m.start(0), m.end(0)
+    def handleMatch(self, m: re.Match[str], data: str) -> tuple[Markup, int, int]:
+        return Markup(sponsor_template.render(SPONSORS=SPONSORS), m.start(0), m.end(0))
 
 
 class SponsorExtension(Extension):
