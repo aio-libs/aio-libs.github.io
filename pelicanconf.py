@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
+from markupsafe import Markup
 from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.extensions.admonition import AdmonitionExtension
