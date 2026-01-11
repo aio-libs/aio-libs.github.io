@@ -12,10 +12,7 @@ from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown.inlinepatterns import InlineProcessor
 
-jinja_fragments = Environment(
-    loader=FileSystemLoader("theme/templates/fragments/"),
-    autoescape=select_autoescape()
-)
+jinja_fragments = Environment(loader=FileSystemLoader("theme/templates/fragments/"))
 sponsor_template = jinja_fragments.get_template("sponsor.html")
 SPONSOR_IMG_PATH = Path("content/images/sponsors/")
 
