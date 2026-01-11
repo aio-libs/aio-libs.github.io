@@ -81,7 +81,7 @@ AUTHOR_FEED_RSS = None
 PLUGIN_PATHS = ("plugins",)
 PLUGINS = ("linkclass",)
 MARKDOWN = {
-    "extensions": (
+    "extensions": [
         "extra",
         AdmonitionExtension(),
         MetaExtension(),
@@ -89,7 +89,7 @@ MARKDOWN = {
         TocExtension(),
         WikiLinkExtension(base_url="/projects/", html_class=None),
         SponsorExtension(),
-    ),
+    ],
 }
 
 # Theme
