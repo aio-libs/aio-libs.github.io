@@ -1,7 +1,6 @@
 import logging
 import re
 from pathlib import Path
-from types import MappingProxyType
 
 from jinja2 import Environment, FileSystemLoader
 from markdown.extensions.admonition import AdmonitionExtension
@@ -53,11 +52,11 @@ _SPONSORS_SILVER = (
     ("Test silver sponsor", "https://aiohttp.org/"),
 )
 _SPONSORS_BRONZE = ("dmTECH",)
-SPONSORS = MappingProxyType({
+SPONSORS = {
     "gold": tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS_GOLD),
     "silver": tuple({"name": s[0], "url": s[1]} for s in _SPONSORS_SILVER),
     "bronze": tuple({"name": s for s in _SPONSORS_BRONZE})
-})
+}
 
 # URL settings
 FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
