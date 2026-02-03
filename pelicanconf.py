@@ -55,7 +55,7 @@ _SPONSORS_BRONZE = ("dmTECH",)
 SPONSORS = {
     "gold": tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS_GOLD),
     "silver": tuple({"name": s[0], "url": s[1]} for s in _SPONSORS_SILVER),
-    "bronze": tuple({"name": s for s in _SPONSORS_BRONZE})
+    "bronze": tuple({"name": s} for s in _SPONSORS_BRONZE)
 }
 
 # URL settings
