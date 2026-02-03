@@ -1,6 +1,7 @@
 import logging
 import re
 from pathlib import Path
+from types import MappingProxyType
 
 from jinja2 import Environment, FileSystemLoader
 from markdown.extensions.admonition import AdmonitionExtension
@@ -31,7 +32,7 @@ def sponsors(preprocessor: Preprocessor, tag: str, markup: str) -> str:
     assert match is not None
     sponsor_group = match.group(1)
 
-    return sponsor_template.render(SPONSORS=SPONSORS)
+    return sponsor_template.render(SPONSORS=SPONSORS[sponsor_group])
 
 
 SITENAME = "aio-libs"
@@ -44,11 +45,19 @@ PATH = "content"
 LOCALE = "en_US.utf8"
 TIMEZONE = "UTC"
 
-_SPONSORS = (
+_SPONSORS_GOLD = (
     ("Tidelift", "https://tidelift.com/"),
     ("Open Home Foundation", "https://www.openhomefoundation.org/"),
 )
-SPONSORS = tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS)
+_SPONSORS_SILVER = (
+    ("Test silver sponsor", "https://aiohttp.org/"),
+)
+_SPONSORS_BRONZE = ("dmTECH",)
+SPONSORS = MappingProxyType({
+    "gold": tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS_GOLD),
+    "silver": tuple({"name": s[0], "url": s[1]} for s in _SPONSORS_SILVER),
+    "bronze": tuple({"name": s for s in _SPONSORS_BRONZE})
+})
 
 # URL settings
 FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
