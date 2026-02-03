@@ -54,6 +54,9 @@
                 </ul>
                 {% endif %}
             {% endif %}
+
+            <h2>Featured Sponsor</h2>
+            <div id="sponsor-sidebar"></div>
         {% endblock nav %}
         </section>
         <section class="aio-content">
@@ -63,9 +66,7 @@
     </main>
 
     {% block footer %}
-        <footer>
-                <div id="sponsor-sidebar"></div>
-        </footer>
+        <footer></footer>
 
         <template id="template-sponsor-sidebar" data-sponsors='{{ SPONSORS|tojson }}'>
                 <a><img /></a>
