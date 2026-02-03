@@ -1,3 +1,10 @@
 Title: Sponsor aio-libs
 
-Foo
+# Gold
+{% sponsors gold %}
+
+# Silver
+{% sponsors silver %}
+
+# Bronze
+{% sponsors bronze %}
