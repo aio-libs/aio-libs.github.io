@@ -28,9 +28,9 @@
                 {% endfor %}
             </ul>
             {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% if categories %}
+                {% if tags %}
                 <ul class="aio-nav__list" aria-label="Categories">
-                    {% for cat, null in categories %}
+                    {% for cat, null in tags %}
                         <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
                     {% endfor %}
                 </ul>
