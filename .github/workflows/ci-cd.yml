@@ -29,6 +29,8 @@ jobs:
         run: pelican -s publishconf.py
       - name: Build Pygments CSS
         run: pygmentize -S default -f html > output/theme/css/pygment.css
+      - name: Run tests
+        run: python test.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
