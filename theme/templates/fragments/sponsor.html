@@ -1,9 +1,3 @@
 {% for sponsor in SPONSORS %}
-    {% if sponsor.img %}
 <a href="{{ sponsor.url }}"><img src={{ sponsor.img }} alt="{{ sponsor.name }}" /></a>
-    {% elif sponsor.url %}
-<a href="{{ sponsor.url }}">{{ sponsor.name }}</a>
-    {% else %}
-{{ sponsor.name }}
-    {% endif %}
 {% endfor %}
