@@ -4,6 +4,8 @@ from pelican.generators import ArticlesGenerator
 
 
 def tag_from_path(article_generator: ArticlesGenerator, content: Article) -> None:
+    if not hasattr(content, "tags"):
+        content.tags = []
     content.tags.append(article.tag)
 
 
