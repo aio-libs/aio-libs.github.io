@@ -13,7 +13,7 @@ from markdown.preprocessors import Preprocessor
 from pelican.plugins.liquid_tags import LiquidTags
 
 jinja_fragments = Environment(loader=FileSystemLoader("theme/templates/fragments/"))
-sponsor_template = jinja_fragments.get_template("sponsor.html")
+sponsor_templates = {k: jinja_fragments.get_template(f"sponsor-{k}.html") for k in ("gold", "silver", "bronze")}
 SPONSOR_IMG_PATH = Path("content/images/sponsors/")
 SPONSOR_TAG_PATTERN = re.compile(r"(gold|silver|bronze)")
 
@@ -30,8 +30,9 @@ def sponsors(preprocessor: Preprocessor, tag: str, markup: str) -> str:
     match = SPONSOR_TAG_PATTERN.search(markup)
     assert match is not None
     sponsor_group = match.group(1)
+    template = sponsor_templates[sponsor_group]
 
-    return sponsor_template.render(SPONSORS=SPONSORS[sponsor_group])
+    return template.render(SPONSORS=SPONSORS[sponsor_group])
 
 
 SITENAME = "aio-libs"
