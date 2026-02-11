@@ -55,7 +55,6 @@
                 {% endif %}
             {% endif %}
 
-            <h2>Featured Sponsor</h2>
             <div id="sponsor-sidebar"></div>
         {% endblock nav %}
         </section>
@@ -69,7 +68,8 @@
         <footer></footer>
 
         <template id="template-sponsor-sidebar" data-sponsors='{{ SPONSORS["gold"]|tojson }}'>
-                <a><img /></a>
+            <h2>Featured Sponsor</h2>
+            <a><img /></a>
         </template>
     {% endblock footer %}
 {% endblock body %}
