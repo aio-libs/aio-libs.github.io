@@ -51,7 +51,7 @@ _SPONSORS_GOLD = (
 _SPONSORS_SILVER = (
     ("Test silver sponsor", "https://aiohttp.org/"),
 )
-_SPONSORS_BRONZE = ("dmTECH",)
+_SPONSORS_BRONZE = ("thanks.dev", "dmTECH")
 SPONSORS = {
     "gold": tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS_GOLD),
     "silver": tuple({"name": s[0], "url": s[1]} for s in _SPONSORS_SILVER),
@@ -59,7 +59,7 @@ SPONSORS = {
 }
 
 # URL settings
-FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
+#FILENAME_METADATA = r"(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)"
 ARTICLE_URL = "news/{date:%Y}/{slug}/"
 ARTICLE_SAVE_AS = "news/{date:%Y}/{slug}/index.html"
 AUTHOR_URL = "author/{slug}/"
@@ -69,7 +69,7 @@ CATEGORY_URL = "category/{slug}/"
 CATEGORY_SAVE_AS = "category/{slug}/index.html"
 CATEGORIES_SAVE_AS = "category/index.html"
 INDEX_SAVE_AS = "news/index.html"
-PATH_METADATA = r"pages/(?P<prefix>([^/]+/)|)(?P<slug>.*)\.md"
+PATH_METADATA = r"(pages/(?P<prefix>([^/]+/)|)(?P<slug>.*)\.md)|(news/(?P<tag>([^/]+/)|)/(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*))"
 PAGE_URL = "{prefix}{slug}/"
 PAGE_SAVE_AS = "{prefix}{slug}/index.html"
 TAG_URL = "tag/{slug}/"
