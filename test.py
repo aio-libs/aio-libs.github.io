@@ -1,6 +1,7 @@
 """Some extra sanity checks for the CI."""
 
 import sys
+import re
 from pathlib import Path
 
 NEWS = Path(__file__).parent / "content" / "news"
