@@ -1,41 +1,20 @@
 Title: Aiohttp
+Links: Docs=https://docs.aiohttp.org/en/stable/
+       Github=https://github.com/aio-libs/aiohttp/
 
-![]({static}/images/aiohttp.svg)
+An asynchronous HTTP Client/Server for Python's [asyncio](https://docs.python.org/3/library/asyncio.html).
 
-An asynchronous HTTP Client/Server for asyncio and Python.
+As a [client](https://docs.aiohttp.org/en/stable/client.html), aiohttp has everything you'd expect plus:
 
-Client example:
+  - [WebSocket](https://docs.aiohttp.org/en/stable/client_quickstart.html#websockets) support.
+  - [Middlewares](https://docs.aiohttp.org/en/stable/client_advanced.html#client-middleware) to customise request/response processing.
+  - [Tracing](https://docs.aiohttp.org/en/stable/tracing_reference.html).
+  - High performance.
 
-    :::python
-    import aiohttp
-    import asyncio
+As a [web server/framework](https://docs.aiohttp.org/en/stable/web.html), aiohttp has everything you'd expect plus:
 
-    async def main():
-
-        async with aiohttp.ClientSession() as session:
-            async with session.get('http://python.org') as response:
-
-                print("Status:", response.status)
-                print("Content-type:", response.headers['content-type'])
-
-                html = await response.text()
-                print("Body:", html[:15], "...")
-
-    asyncio.run(main())
-
-Server example:
-
-    :::python
-    from aiohttp import web
-
-    async def handle(request):
-        name = request.match_info.get('name', "Anonymous")
-        text = "Hello, " + name
-        return web.Response(text=text)
-
-    app = web.Application()
-    app.add_routes([web.get('/', handle),
-                    web.get('/{name}', handle)])
-
-    if __name__ == '__main__':
-        web.run_app(app)
+  - [WebSocket](https://docs.aiohttp.org/en/stable/web_quickstart.html#websockets) support.
+  - [Middlewares](https://docs.aiohttp.org/en/stable/web_advanced.html#middlewares) to customise request/response processing.
+  - Optional [handler cancellation](https://docs.aiohttp.org/en/stable/web_advanced.html#web-handler-cancellation) when a client disconnects.
+  - High performance.
+  - An extensive collection of [first and third party libraries](https://docs.aiohttp.org/en/stable/third_party.html) extending the base functionality.
