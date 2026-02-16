@@ -9,7 +9,7 @@
     {{ translations.translations_for(page) }}
 
     {% for link in page.links %}
-    <a href="{ link.partition("=")[2] }">{ link.partition("=")[0] }</a>
+    <a href="{{ link.partition("=")[2] }}">{{ link.partition("=")[0] }}</a>
     {% endfor %}
 
     {{ page.content }}
