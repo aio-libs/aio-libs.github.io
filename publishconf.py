@@ -11,7 +11,6 @@ RELATIVE_URLS = False
 
 FEED_DOMAIN = "https://aio-libs.org"
 FEED_ATOM = "feeds/atom.xml"
-FEED_ALL_ATOM = "feeds/all.atom.xml"
 TAG_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
