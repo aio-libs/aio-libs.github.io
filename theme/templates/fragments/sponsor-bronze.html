@@ -1,3 +1,4 @@
-{% for sponsor in SPONSORS %}
-{{ sponsor.name }}
-{% endfor %}
+<section>
+<h3>Bronze Tier Sponsors</h3>
+<ul>{% for sponsor in SPONSORS %}<li>{{ sponsor.name }}</li>{% endfor %}</ul>
+</section>
