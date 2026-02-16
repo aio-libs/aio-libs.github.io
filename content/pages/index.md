@@ -2,80 +2,20 @@ Title: About us
 Status: hidden
 save_as: index.html
 
-We are a co-operative of developers who maintain open-source libraries for the Python module [asyncio](https://docs.python.org/3/library/asyncio.html), including [aiohttp](https://docs.aiohttp.org/en/stable/) and associated ecosystem.
+We are a co-operative of developers who maintain open-source libraries for use with Python's [asyncio](https://docs.python.org/3/library/asyncio.html), including the popular [[aiohttp]] library.
 
 ## Sponsors
 
-Asyncio would not be possible without our amazing sponsors. Please consider joining them to help fund our work. Our finances are entirely transparent and managed by [Open Collective](https://opencollective.com/aio-libs).
+Aio-libs would not be possible without our amazing sponsors. Please consider [joining them](/sponsor_us/) to help fund our work.
 
 {% sponsors gold %}
 {% sponsors silver %}
 
-### Asyncio Cooperative (Totally Fictional)
+### Aio-lbs
 
-Welcome to the **Asyncio Cooperative**, a completely made-up, not-real, absolutely placeholder homepage for a co-operative of developers who *pretend* to maintain open-source libraries in the Python `asyncio` ecosystem, including `aiohttp`. None of this text should be taken seriously. It exists only as illustrative filler and friendly nonsense.
+This website exists to showcase the work that we do across aio-libs.
 
-- Welcome to the **Asyncio Cooperative**, a completely made-up, not-real, absolutely placeholder homepage for a co-operative of developers who *pretend* to maintain open-source libraries.
-- In the Python `asyncio` ecosystem, including `aiohttp`.
-- None of this text should be taken seriously. It exists only as illustrative filler and friendly nonsense.
+Under projects you can view the various libraries we maintain (more to be added soon).
 
-Everything below is **invented**, **non-binding**, and **purely demonstrative**.
-
-### Who We Are (Allegedly)
-
-We are a fictional co-operative of developers who, in this placeholder universe, collaboratively maintain asyncio-based libraries. This paragraph exists only to show what such a section *might* look like, not to describe any real organization, governance model, or human beings.
-
-#### Heading of fourth level
-
-If this were a real homepage (which it is not), this section might talk about values, collaboration, and sustainability. Instead, it simply reminds you again that this is **sample markdown text** and should not be confused with reality.
-
-##### Fifth level heading
-
-Asyncio would not be possible without our amazing sponsors. Please consider joining them to help fund our work. Our finances are entirely transparent.
-
-###### Sixth level headings seem kind of pointless tbh
-
-## What We (Pretend to) Maintain
-
-In this entirely fabricated scenario, the co-op claims stewardship over parts of the asyncio ecosystem, such as:
-
-- `aiohttp`
-- imaginary subprojects
-- hypothetical integrations
-- vibes-based abstractions
-
-None of these claims are real. This list is placeholder content designed to show structure, not truth. If you are reading this expecting accuracy, please stop and re-read the disclaimer: **this is all made up**.
-
-### hypothetical integrations
-
-Our fictional mission is to demonstrate what a mission statement *could* look like in markdown. Any resemblance to real missions, goals, or philosophies is accidental and coincidental.
-
-This paragraph exists solely to fill space and illustrate layout. It does not represent the intentions of the asyncio community, the aiohttp maintainers, or anyone else who actually exists.
-
----
-
-## Example Async Code (For Demonstration Only)
-
-Below is a code sample that looks realistic but is included only as decorative filler. It is not advice, documentation, or an endorsement of anything.
-
-```python
-import asyncio
-import aiohttp
-
-async def fetch_placeholder(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            return await response.text()
-
-async def main():
-    text = await fetch_placeholder("https://example.com")
-    print("This output is also fictional:", text[:50])
-
-asyncio.run(main())
-```
-## Our Completely Fake Mission
-
-Our fictional mission is to demonstrate what a mission statement *could* look like in markdown. Any resemblance to real missions, goals, or philosophies is accidental and coincidental.
-
-This paragraph exists solely to fill space and illustrate layout. It does not represent the intentions of the asyncio community, the aiohttp maintainers, or anyone else who actually exists.
-
+Under news you can read the latest posts from us where we talk about some of the things we've been working on and give you some behind-the-scenes views of the work we've been doing.
+If you want to follow along, there is an atom feed for all news, as well as a feed for each category if you're only interested in particular areas of our work.
