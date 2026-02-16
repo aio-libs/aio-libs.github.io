@@ -69,7 +69,6 @@ AUTHORS_SAVE_AS = "author/index.html"
 CATEGORY_URL = None
 CATEGORY_SAVE_AS = None
 CATEGORIES_SAVE_AS = None
-DEFAULT_CATEGORY = ""
 # Index is the news listing. We move it in order to have our index.md file as the home page.
 INDEX_SAVE_AS = "news/index.html"
 # Pages we use prefix in order to split the menu between projects and general links.
@@ -81,7 +80,6 @@ PAGE_SAVE_AS = "{prefix}{slug}/index.html"
 TAG_URL = "category/{slug}/"
 TAG_SAVE_AS = "category/{slug}/index.html"
 TAGS_SAVE_AS = "category/index.html"
-USE_FOLDER_AS_CATEGORY = False
 YEAR_ARCHIVE_SAVE_AS = "news/{date:%Y}/index.html"
 YEAR_ARCHIVE_URL = "news/{date:%Y}/"
 
