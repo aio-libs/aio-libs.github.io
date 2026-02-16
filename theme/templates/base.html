@@ -13,54 +13,27 @@
         <section class="aio-nav">
         {% block header %}{{ super() }}{% endblock header %}
         {% block nav %}
-            {% if DISPLAY_PAGES_ON_MENU %}
-                {% if pages %}
-                <ul class="aio-nav__list">
-                    {% for p in pages if not p.prefix == "projects/" %}
-                        <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            {% endif %}
+            <ul class="aio-nav__list">
+                {% for p in pages if not p.prefix == "projects/" %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                {% endfor %}
+            </ul>
             <ul class="aio-nav__list" aria-label="Projects">
                 {% for p in pages if p.prefix == "projects/" %}
                     <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                 {% endfor %}
             </ul>
-            {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% if tags %}
-                <ul class="aio-nav__list" aria-label="Categories">
-                    {% for cat, null in tags %}
-                        <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            {% endif %}
-            {% if DISPLAY_SPONSORS_ON_MENU %}
-                {% if SPONSORS %}
-                <ul class="aio-nav__list" aria-label="Sponsors">
-                    {% for sponsor, null in SPONSORS %}
-                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ sponsor.url }}">{{ sponsor }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            {% endif %}
-            {% if DISPLAY_LINKS_ON_MENU %}
-                {% if LINKS %}
-                <ul class="aio-nav__list" aria-label="Links">
-                    {% for title, link in LINKS %}
-                    <li><a class="aio-nav__link" href="{{ link }}">{{ title }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            {% endif %}
+            <ul class="aio-nav__list" aria-label="News">
+                {% for cat, null in tags %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat }}</a></li>
+                {% endfor %}
+            </ul>
 
             <div id="sponsor-sidebar" class="aio-sponsor-sidebar"></div>
         {% endblock nav %}
         </section>
         <section class="aio-content">
-            {% block content %}
-            {% endblock content %}
+            {% block content %}{% endblock content %}
         </section>
     </main>
 
