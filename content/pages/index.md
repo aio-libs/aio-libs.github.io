@@ -11,7 +11,7 @@ Aio-libs would not be possible without our amazing sponsors. Please consider [jo
 {% sponsors gold %}
 {% sponsors silver %}
 
-### Aio-lbs
+## Aio-libs
 
 This website exists to showcase the work that we do across aio-libs.
 
