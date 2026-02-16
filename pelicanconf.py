@@ -80,6 +80,7 @@ PAGE_SAVE_AS = "{prefix}{slug}/index.html"
 TAG_URL = "category/{slug}/"
 TAG_SAVE_AS = "category/{slug}/index.html"
 TAGS_SAVE_AS = "category/index.html"
+USE_FOLDER_AS_CATEGORY = False
 YEAR_ARCHIVE_SAVE_AS = "news/{date:%Y}/index.html"
 YEAR_ARCHIVE_URL = "news/{date:%Y}/"
 
