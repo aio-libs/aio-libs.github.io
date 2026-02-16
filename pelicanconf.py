@@ -50,8 +50,7 @@ _SPONSORS_GOLD = (
     ("Open Home Foundation", "https://www.openhomefoundation.org/"),
 )
 _SPONSORS_SILVER = (
-    ("Test silver sponsor", "https://aiohttp.org/"),
-    ("Another Silver", "https://aiohttp.org/"),
+    # ("Test silver sponsor", "https://aiohttp.org/"),
 )
 _SPONSORS_BRONZE = ("thanks.dev", "dmTECH")
 
