@@ -69,10 +69,14 @@ AUTHORS_SAVE_AS = "author/index.html"
 CATEGORY_URL = None
 CATEGORY_SAVE_AS = None
 CATEGORIES_SAVE_AS = None
+# Index is the news listing. We move it in order to have our index.md file as the home page.
 INDEX_SAVE_AS = "news/index.html"
-PATH_METADATA = r"(pages/(?P<prefix>([^/]+/)|))|(news/(?P<tags>[^/]+)/(?P<date>\d{4}-\d{2}-\d{2})_)(?P<slug>.*)\.md"
+# Pages we use prefix in order to split the menu between projects and general links.
+# News we set the default tag to the subdirectory. This can be overriden by Tags: header if multiple tags are wanted.
+PATH_METADATA = r"((pages/(?P<prefix>([^/]+/)|))|(news/(?P<tags>[^/]+)/(?P<date>\d{4}-\d{2}-\d{2})_))(?P<slug>.*)\.md"
 PAGE_URL = "{prefix}{slug}/"
 PAGE_SAVE_AS = "{prefix}{slug}/index.html"
+# We use tags as categories, so we can occasionally put something under multiple categories.
 TAG_URL = "category/{slug}/"
 TAG_SAVE_AS = "category/{slug}/index.html"
 TAGS_SAVE_AS = "category/index.html"
@@ -104,17 +108,13 @@ MARKDOWN = {
 # Theme
 THEME = "theme/"
 LINKS = (
-    ("Pelican", "https://getpelican.com/"),
-    ("Python.org", "https://www.python.org/"),
-    ("Jinja2", "https://palletsprojects.com/p/jinja/")
+    # ("Pelican", "https://getpelican.com/"),
 )
 SOCIAL = (
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
+    # ("Another social link", "#"),
 )
 
 DEFAULT_PAGINATION = 10
-PAGINATED_TEMPLATES = {"index": None, "tag": None, "category": None, "author": 5}
 PAGINATION_PATTERNS = (
     (1, "{url}", "{save_as}"),
     (2, "{base_name}/{number}/", "{base_name}/{number}/index.html"),
