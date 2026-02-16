@@ -18,4 +18,4 @@ This website exists to showcase the work that we do across aio-libs.
 Under projects you can view the various libraries we maintain (more to be added soon).
 
 Under news you can read the latest posts from us where we talk about some of the things we've been working on and give you some behind-the-scenes views of the work we've been doing.
-If you want to follow along, there is an atom feed for all news, as well as a feed for each category if you're only interested in particular areas of our work.
+If you want to follow along, there is an Atom feed for all news, as well as a feed for each category if you're only interested in particular areas of our work.
