@@ -1,10 +1,7 @@
-Title: Sponsor aio-libs
+Title: Sponsor us
 
-# Gold
+Asyncio would not be possible without our amazing sponsors. Please consider joining them to help fund our work. Our finances are entirely transparent and managed by [Open Collective](https://opencollective.com/aio-libs).
+
 {% sponsors gold %}
-
-# Silver
 {% sponsors silver %}
-
-# Bronze
 {% sponsors bronze %}

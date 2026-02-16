@@ -55,7 +55,7 @@
                 {% endif %}
             {% endif %}
 
-            <div id="sponsor-sidebar"></div>
+            <div id="sponsor-sidebar" class="aio-sponsor-sidebar"></div>
         {% endblock nav %}
         </section>
         <section class="aio-content">
@@ -68,8 +68,8 @@
         <footer></footer>
 
         <template id="template-sponsor-sidebar" data-sponsors='{{ SPONSORS["gold"]|tojson }}'>
-            <h2>Featured Sponsor</h2>
-            <a><img /></a>
+            <p>Featured Sponsor:</p>
+            <a class="aio-sponsor"><img /></a>
         </template>
     {% endblock footer %}
 {% endblock body %}
