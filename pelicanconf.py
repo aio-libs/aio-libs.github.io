@@ -1,0 +1,128 @@
+import logging
+import re
+from pathlib import Path
+
+from jinja2 import Environment, FileSystemLoader
+from markdown.extensions.admonition import AdmonitionExtension
+from markdown.extensions.codehilite import CodeHiliteExtension
+from markdown.extensions.meta import MetaExtension
+from markdown.extensions.smarty import SmartyExtension
+from markdown.extensions.toc import TocExtension
+from markdown.extensions.wikilinks import WikiLinkExtension
+from markdown.preprocessors import Preprocessor
+from pelican.plugins.liquid_tags import LiquidTags
+
+jinja_fragments = Environment(loader=FileSystemLoader("theme/templates/fragments/"))
+sponsor_templates = {k: jinja_fragments.get_template(f"sponsor-{k}.html") for k in ("gold", "silver", "bronze")}
+SPONSOR_IMG_PATH = Path("content/images/sponsors/")
+SPONSOR_TAG_PATTERN = re.compile(r"(gold|silver|bronze)")
+
+
+def sponsor_img(name: str) -> str:
+    """Return the image path for a given sponsor name."""
+    name = name.lower().replace(" ", "-")
+    f = next(SPONSOR_IMG_PATH.glob(name + ".*"))
+    return "/images/sponsors/" + f.name
+
+
+@LiquidTags.register("sponsors")
+def sponsors(preprocessor: Preprocessor, tag: str, markup: str) -> str:
+    match = SPONSOR_TAG_PATTERN.search(markup)
+    assert match is not None
+    sponsor_group = match.group(1)
+    template = sponsor_templates[sponsor_group]
+
+    return template.render(SPONSORS=SPONSORS[sponsor_group])
+
+
+SITENAME = "aio-libs"
+SITEURL = ""
+SUMMARY_MAX_PARAGRAPHS = 1
+
+ARTICLE_PATHS = ("news",)
+PATH = "content"
+
+LOCALE = "en_US.utf8"
+TIMEZONE = "UTC"
+
+_SPONSORS_GOLD = (
+    ("Tidelift", "https://tidelift.com/"),
+    ("Open Home Foundation", "https://www.openhomefoundation.org/"),
+)
+_SPONSORS_SILVER = (
+    # ("Test silver sponsor", "https://aiohttp.org/"),
+)
+_SPONSORS_BRONZE = ("thanks.dev", "dmTECH")
+
+SPONSORS = {
+    "gold": tuple({"name": s[0], "img": sponsor_img(s[0]), "url": s[1]} for s in _SPONSORS_GOLD),
+    "silver": tuple({"name": s[0], "url": s[1]} for s in _SPONSORS_SILVER),
+    "bronze": tuple({"name": s} for s in _SPONSORS_BRONZE)
+}
+
+# URL settings
+ARTICLE_URL = "news/{date:%Y}/{slug}/"
+ARTICLE_SAVE_AS = "news/{date:%Y}/{slug}/index.html"
+AUTHOR_URL = "author/{slug}/"
+AUTHOR_SAVE_AS = "author/{slug}/index.html"
+AUTHORS_SAVE_AS = "author/index.html"
+CATEGORY_URL = None
+CATEGORY_SAVE_AS = None
+CATEGORIES_SAVE_AS = None
+# Index is the news listing. We move it in order to have our index.md file as the home page.
+INDEX_SAVE_AS = "news/index.html"
+# Pages we use prefix in order to split the menu between projects and general links.
+# News we set the default tag to the subdirectory. This can be overriden by Tags: header if multiple tags are wanted.
+PATH_METADATA = r"((pages/(?P<prefix>([^/]+/)|))|(news/(?P<tags>[^/]+)/(?P<date>\d{4}-\d{2}-\d{2})_))(?P<slug>.*)\.md"
+PAGE_URL = "{prefix}{slug}/"
+PAGE_SAVE_AS = "{prefix}{slug}/index.html"
+# We use tags as categories, so we can occasionally put something under multiple categories.
+TAG_URL = "category/{slug}/"
+TAG_SAVE_AS = "category/{slug}/index.html"
+TAGS_SAVE_AS = "category/index.html"
+YEAR_ARCHIVE_SAVE_AS = "news/{date:%Y}/index.html"
+YEAR_ARCHIVE_URL = "news/{date:%Y}/"
+
+# Feed generation is usually not desired when developing
+FEED_ALL_ATOM = None
+CATEGORY_FEED_ATOM = None
+TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
+
+# Plugins
+PLUGIN_PATHS = ("plugins",)
+PLUGINS = ("linkclass", "liquid_tags")
+MARKDOWN = {
+    "extensions": [
+        "extra",
+        AdmonitionExtension(),
+        CodeHiliteExtension(),
+        MetaExtension(),
+        SmartyExtension(),
+        TocExtension(),
+        WikiLinkExtension(base_url="/projects/", html_class=None),
+    ],
+}
+
+# Theme
+THEME = "theme/"
+LINKS = (
+    # ("Pelican", "https://getpelican.com/"),
+)
+SOCIAL = (
+    # ("Another social link", "#"),
+)
+
+DEFAULT_PAGINATION = 10
+PAGINATION_PATTERNS = (
+    (1, "{url}", "{save_as}"),
+    (2, "{base_name}/{number}/", "{base_name}/{number}/index.html"),
+)
+
+LOG_FILTER = (
+    # Remove when fixed: https://github.com/getpelican/pelican/pull/3544
+    (logging.WARN, "Feeds generated without SITEURL set properly may not be valid"),
+    # Alt tag is explicit in Markdown, so this warning doesn't make sense.
+    (logging.WARN, "Empty alt attribute for image %s in %s"),
+)

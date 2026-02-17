@@ -1,0 +1,48 @@
+{% extends "!simple/base.html" %}
+
+{% block head %}
+        {{- super() }}
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygment.css" />
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js" defer></script>
+{%- endblock head %}
+
+{% block body %}
+    <div class="aio-pattern"></div>
+    <main class="aio-wrapper">
+        <section class="aio-nav">
+        {% block header %}{{ super() }}{% endblock header %}
+        {% block nav %}
+            <ul class="aio-nav__list">
+                {% for p in pages if p.prefix != "projects/" %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <ul class="aio-nav__list" aria-label="Projects">
+                {% for p in pages if p.prefix == "projects/" %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <ul class="aio-nav__list" aria-label="News">
+                {% for cat, null in tags %}
+                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <div id="sponsor-sidebar" class="aio-sponsor-sidebar"></div>
+        {% endblock nav %}
+        </section>
+        <section class="aio-content">
+            {% block content %}{% endblock content %}
+        </section>
+    </main>
+
+    {% block footer %}
+        <footer></footer>
+
+        <template id="template-sponsor-sidebar" data-sponsors='{{ SPONSORS["gold"]|tojson }}'>
+            <p>Featured Sponsor:</p>
+            <a class="aio-sponsor"><img /></a>
+        </template>
+    {% endblock footer %}
+{% endblock body %}

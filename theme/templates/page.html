@@ -1,0 +1,25 @@
+{% extends "!simple/page.html" %}
+
+{% block content %}
+  <article>
+    <header>
+      <h2>{{ page.title }}</h2>
+    </header>
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(page) }}
+
+    {% for link in page.links %}
+    <a href="{{ link.partition("=")[2] }}">{{ link.partition("=")[0] }}</a>
+    {% endfor %}
+
+    {{ page.content }}
+
+    {% if page.modified %}
+      <footer>
+        <p>
+          Last updated: {{ page.locale_modified }}
+        </p>
+      </footer>
+    {% endif %}
+  </article>
+{% endblock %}
