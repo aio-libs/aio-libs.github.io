@@ -7,7 +7,6 @@ We are a co-operative of developers who maintain open-source libraries for use w
 ## Sponsors
 
 Aio-libs would not be possible without our amazing sponsors. Please consider [joining them](/sponsor_us/) to help fund our work.
-
 {% sponsors gold %}
 {% sponsors silver %}
 
