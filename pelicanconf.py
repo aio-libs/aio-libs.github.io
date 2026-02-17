@@ -73,7 +73,7 @@ CATEGORIES_SAVE_AS = None
 INDEX_SAVE_AS = "news/index.html"
 # Pages we use prefix in order to split the menu between projects and general links.
 # News we set the default tag to the subdirectory. This can be overriden by Tags: header if multiple tags are wanted.
-PATH_METADATA = r"((pages/(?P<prefix>([^/]+/)|))|(news/(?P<tags>[^/]+)/(?P<date>\d{4}-\d{2}-\d{2})_))(?P<slug>.*)\.md"
+PATH_METADATA = r"((pages/(?P<prefix>([^/]+/)|))|(news/(?P<tags>[^/]+)/(?P<date>\d{4}-\d{2}-\d{2})_))(?P<slug>[^_]+)\.md"
 PAGE_URL = "{prefix}{slug}/"
 PAGE_SAVE_AS = "{prefix}{slug}/index.html"
 # We use tags as categories, so we can occasionally put something under multiple categories.
