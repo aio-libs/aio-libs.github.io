@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: 'output/'
 
@@ -46,7 +46,7 @@ jobs:
       pull-requests: write  # For comments in PRs
     steps:
       - name: Download site artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           # The name of artifacts created by `actions/upload-pages-artifact` is always "github-pages"
           name: github-pages
