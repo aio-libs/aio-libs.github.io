@@ -1,0 +1,18 @@
+{% extends "!simple/page.html" %}
+
+{% block content %}
+  <header>
+    <h2>{{ page.title }}</h2>
+  </header>
+  {% import 'translations.html' as translations with context %}
+  {{ translations.translations_for(page) }}
+
+  {{ page.content }}
+
+  {% for p in pages|sort(attribute='title') if p.prefix == "projects/" %}
+  <article>
+    <h3><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h3>
+    {{ p.summary }}
+  </article>
+  {% endfor %}
+{% endblock %}
