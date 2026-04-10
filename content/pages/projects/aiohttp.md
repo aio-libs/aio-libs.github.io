@@ -1,7 +1,7 @@
 Title: Aiohttp
-Links: Docs=https://docs.aiohttp.org/en/stable/
+Links: Documentation=https://docs.aiohttp.org/en/stable/
        Github=https://github.com/aio-libs/aiohttp/
-       Sponsor=https://opencollective.com/aio-libs/projects/aiohttp
+       Sponsorship=https://opencollective.com/aio-libs/projects/aiohttp
 
 An asynchronous HTTP Client/Server for Python's [asyncio](https://docs.python.org/3/library/asyncio.html).
 

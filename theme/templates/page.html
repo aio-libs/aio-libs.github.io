@@ -8,9 +8,13 @@
     {% import 'translations.html' as translations with context %}
     {{ translations.translations_for(page) }}
 
-    {% for link in page.links %}
-    <a href="{{ link.partition("=")[2] }}">{{ link.partition("=")[0] }}</a>
-    {% endfor %}
+    {% if page.links %}
+      <div class="aio-post-links">
+        {% for link in page.links %}
+          <a class="aio-post-links__item" href="{{ link.partition("=")[2] }}">{{ link.partition("=")[0] }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
 
     {{ page.content }}
 
