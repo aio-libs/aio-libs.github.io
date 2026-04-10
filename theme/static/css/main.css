@@ -1,16 +1,32 @@
 :root {
-    --light-bg-color: #fff;
-    --light-text-color: #000;
-    --light-detail-color: #595959;
-    --light-hover-color:#f1f1f1;
-    --dark-bg-color: #000;
-    --dark-text-color: #fff;
-    --dark-details-color: #505050;
-    --dark-hover-color:#f1f1f1;
+    --color-bg: #ffffff;
+    --color-text: #000000;
+    --color-detail: #b2b2b2;
+    --color-button:#f1f1f1;
+    --color-button-hover:#dddddd;
+    --color-muted: #999999;
+    --color-highlight: ##ffffff;
+    --color-highlight-hover: #e2e2e2;
+    --color-link: #3c3cf3;
+    --color-link-hover: #2929c3;
     --font-size-base: 16px;
     --font-family-base: Merriweather, Serif;
     --font-family-label: Merriweather Sans, Serif;
     --font-family-brand: monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #091413;
+        --color-text: #ffffff;
+        --color-detail: #85a69a;
+        --color-button:#1d2827;
+        --color-button-hover:#233736;
+        --color-muted: #999999;
+        --color-highlight:#B0E4CC;
+        --color-link: #CBBBF2;
+        --color-link-hover: #a790df;
+    }
 }
 
 *, *::before, *::after {
@@ -50,8 +66,8 @@ body {
     font-style: normal;
     line-height: 1.5;
     font-variation-settings: "wdth" 100;
-    background-color: var(--light-bg-color);
-    color: var(--light-text-color);
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-size: 1.5em; }
 h2 { font-size: 1.4em; }
-h3 { font-size: 1.1em; font-family: var(--font-family-base); border-bottom: 1px solid var(--light-detail-color)}
+h3 { font-size: 1.1em; font-family: var(--font-family-base); border-bottom: 1px solid var(--color-detail)}
 h4 { font-size: 1.1em; font-family: var(--font-family-base); }
 h5 { font-size: 1em; font-family: var(--font-family-base); }
 h6 { font-size: 1em; font-family: var(--font-family-base); }
@@ -71,7 +87,7 @@ hr {
     height: 0px;
     margin: 1em 0;
     border: 0;
-    border-bottom: 1px solid var(--light-detail-color);
+    border-bottom: 1px solid var(--color-detail);
 }
 
 p, address {
@@ -83,9 +99,11 @@ p, address {
 }
 
 a {
+    color: var(--color-link);
     text-decoration: none;
 
     &:hover {
+        color: var(--color-link-hover);
         text-decoration: underline;
     }
 }
@@ -106,7 +124,7 @@ code {
 
 blockquote {
     padding: 1em 1em;
-    border: 1px solid var(--light-detail-color);
+    border: 1px solid var(--color-detail);
 
     h1, h2, h3, h4, h5, h6 {
         margin: 0 0 .2em 0;
@@ -133,7 +151,7 @@ footer {
     padding: 1em 0 2em 0;
     font-family: var(--font-family-brand);
     font-size: .9em;
-    color: var(--light-detail-color);
+    color: var(--color-detail);
 }
 
 address {
@@ -239,7 +257,7 @@ address {
     font-size: .8em;
     font-weight: 400;
     text-transform: uppercase;
-    color: #999999;
+    color: var(--color-muted);
 }
 
 .aio-nav__link {
@@ -253,7 +271,7 @@ address {
     }
 
     &:hover {
-        background-color: #f1f1f1;
+        background-color: var(--color-button-hover);
         border-radius: .5em;
         text-decoration: none;
     }
@@ -278,10 +296,10 @@ address {
 .aio-sponsor {
     display: block;
     padding: .5em;
-    border: 1px dashed var(--light-detail-color);
+    background-color: var(--color-highlight);
 
     &:hover {
-        background-color: var(--light-hover-color);
+        background-color: var(--color-highlight-hover);
     }
 }
 
@@ -302,7 +320,7 @@ address {
         padding: 1em;
 
         &:hover {
-            background-color: var(--light-hover-color);
+            background-color: var(--color-highlight-hover);
         }
     }
 }
@@ -313,7 +331,30 @@ address {
     display: flex;
     margin: 0;
     padding: 0;
-    border: 1px dashed var(--light-detail-color);
+    background-color: var(--color-highlight);
     flex-basis: 400px;
     max-width: 500px;
+}
+
+.aio-post-links {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 .2em 1em 0;
+    padding: .5em 0;
+}
+
+.aio-post-links__item {
+    margin: 0 .5em .5em 0;
+    padding: .4em 1em;
+    background-color: var(--color-button);
+    border-radius: .5em;
+
+    &:hover {
+        background-color: var(--color-button-hover);
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
 }
