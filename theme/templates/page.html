@@ -1,13 +1,6 @@
 {% extends "!simple/page.html" %}
 
-{% block content %}
-  <article>
-    <header>
-      <h2>{{ page.title }}</h2>
-    </header>
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(page) }}
-
+{% block page_content %}
     {% if page.links %}
       <div class="aio-post-links">
         {% for link in page.links %}
@@ -16,14 +9,5 @@
       </div>
     {% endif %}
 
-    {{ page.content }}
-
-    {% if page.modified %}
-      <footer>
-        <p>
-          Last updated: {{ page.locale_modified }}
-        </p>
-      </footer>
-    {% endif %}
-  </article>
+    {{ super() }}
 {% endblock %}
