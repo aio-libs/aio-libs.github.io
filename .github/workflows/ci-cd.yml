@@ -28,7 +28,7 @@ jobs:
       - name: Build Pygments CSS
         run: pygmentize -S default -f html > theme/static/css/pygment.css
       - name: Build site
-        run: pelican -s publishconf.py
+        run: pelican --fatal -s publishconf.py
       - name: Run tests
         run: python test.py
       - name: Setup Pages
