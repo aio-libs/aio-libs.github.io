@@ -1,0 +1,10 @@
+{% extends "!simple/tag.html" %}
+
+{% block content_title %}
+    {{ super() }}
+    {% if TAG_FEED_ATOM %}
+        <div class="aio-post-links">
+            <a class="aio-post-links__item" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM.format(slug=tag.slug) }}" type="application/atom+xml">Atom feed</a>
+        </div>
+    {% endif %}
+{% endblock %}

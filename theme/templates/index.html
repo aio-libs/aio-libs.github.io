@@ -1,0 +1,10 @@
+{% extends "!simple/index.html" %}
+
+{% block content_title %}
+    {{ super() }}
+    {% if FEED_ATOM %}
+        <div class="aio-post-links">
+            <a class="aio-post-links__item" href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml">Atom feed</a>
+        </div>
+    {% endif %}
+{% endblock %}
