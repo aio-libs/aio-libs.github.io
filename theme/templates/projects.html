@@ -11,7 +11,7 @@
 
   {% for p in pages|sort(attribute='title') if p.prefix == "projects/" %}
   <article>
-    <h3><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h3>
+    <h2><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h2>
     {{ p.summary }}
   </article>
   {% endfor %}

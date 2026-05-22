@@ -89,6 +89,9 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+FEED_DOMAIN = "https://aio-libs.org"
+FEED_ATOM = "feeds/atom.xml"
+TAG_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 # Plugins
 PLUGIN_PATHS = ("plugins",)
