@@ -373,6 +373,8 @@ address {
 }
 
 .aio-post-links__item {
+    display: inline-flex;
+    align-items: center;
     margin: 0 .5em .5em 0;
     padding: .4em 1em;
     background-color: var(--color-button);
@@ -389,7 +391,8 @@ address {
 
 .aio-icon-inline {
     display: inline-block;
-    height: .8em;
+    margin: 0 .4em 0 0;
+    height: 1.2em;
 }
 
 .codehilite {
