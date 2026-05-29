@@ -227,7 +227,7 @@ address {
         max-width: 240px;
         padding: 2em 2em 3em 2em;
 
-        h1 {
+        .aio-nav__title {
             margin: 2em 0 1em 0;
         }
         
