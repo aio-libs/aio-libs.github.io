@@ -84,13 +84,13 @@ YEAR_ARCHIVE_SAVE_AS = "news/{date:%Y}/index.html"
 YEAR_ARCHIVE_URL = "news/{date:%Y}/"
 
 # Feed generation
+FEED_ATOM = "feeds/atom.xml"
+TAG_FEED_ATOM = "feeds/{slug}.atom.xml"
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-FEED_ATOM = "feeds/atom.xml"
-TAG_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 # Plugins
 PLUGIN_PATHS = ("plugins",)
