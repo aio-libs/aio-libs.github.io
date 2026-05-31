@@ -9,4 +9,6 @@ from pelicanconf import *
 
 RELATIVE_URLS = False
 
+FEED_DOMAIN = "https://aio-libs.org"
+
 DELETE_OUTPUT_DIRECTORY = True
