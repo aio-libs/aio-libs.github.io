@@ -83,7 +83,7 @@ TAGS_SAVE_AS = "category/index.html"
 YEAR_ARCHIVE_SAVE_AS = "news/{date:%Y}/index.html"
 YEAR_ARCHIVE_URL = "news/{date:%Y}/"
 
-# Feed generation is usually not desired when developing
+# Feed generation
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
