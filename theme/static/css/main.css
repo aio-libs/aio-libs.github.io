@@ -199,44 +199,46 @@ address {
 
 .aio-nav {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    overflow: scroll;
-    max-height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 1em;
+
+    .aio-nav__title {
+        margin: 0 1em 0 0;
+    }
+    
+    .aio-nav__list-heading {
+        margin: 0 .4em;
+    }
 }
 
 @media screen and (min-width: 767px) {
     .aio-nav {
         position: fixed;
         flex-direction: column;
-        align-self: flex-start;
+        align-items: flex-start;
+        justify-content: center;
         width: auto;
         min-width: 240px;
         max-width: 240px;
         padding: 2em 2em 3em 2em;
+
+        .aio-nav__title {
+            margin: 2em 0 1em 0;
+        }
+        
+        .aio-nav__list-heading {
+            margin: .8em 0 .2em 0;
+        }
     }
 }
 
-.aio-title {
-    display: flex;
-    align-items: center;
-    margin: 0 0 .8em 0;
-    font-family: var(--font-family-brand);
-    font-weight: 800;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    white-space: nowrap;
-
-    &:before {
-        content: '';
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        margin: 0 .3em 0 0;
-        background-image: url("/images/aio-libs.svg");
-        background-size: contain;
-    }
+.aio-nav__title {
+    flex-shrink: 0;
 }
 
 .aio-nav__list {
@@ -247,6 +249,14 @@ address {
     li {
         margin: 0;
         padding: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .aio-nav__list--hide {
+        li {
+            display: none;
+        }
     }
 }
 
@@ -277,20 +287,38 @@ address {
     }
 }
 
+.aio-nav__sponsor {
+    margin: 0;
+    width: 100%;
+    max-width: 160px;
+
+    p {
+        margin: 0;
+        font-size: .8em;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .aio-nav__sponsor {
+        margin: 1em 0;
+        width: 100%;
+    }
+}
+
 .aio-content {
     flex-grow: 1;
     width: 100%;
     padding: 1em 1em 200px 1em;
+
+    article {
+        border-bottom: 1px dashed var(--color-muted);
+    }
 }
 
 @media screen and (min-width: 767px) {
     .aio-content {
         padding: 2em 4em 10em 240px;
     }
-}
-
-.aio-sponsor-sidebar {
-    margin: 1em 0;
 }
 
 .aio-sponsor {
@@ -345,6 +373,8 @@ address {
 }
 
 .aio-post-links__item {
+    display: inline-flex;
+    align-items: center;
     margin: 0 .5em .5em 0;
     padding: .4em 1em;
     background-color: var(--color-button);
@@ -357,6 +387,12 @@ address {
     &:last-child {
         margin-right: 0;
     }
+}
+
+.aio-icon-inline {
+    display: inline-block;
+    margin: 0 .4em 0 0;
+    height: 1.2em;
 }
 
 .codehilite {

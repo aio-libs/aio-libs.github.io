@@ -1,0 +1,8 @@
+{% extends "!simple/index.html" %}
+
+{% block content_title %}
+    {{ super() }}
+    {% if FEED_ATOM %}
+        <a class="aio-post-links__item" href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml"><img class="aio-icon-inline" src="/images/feed-icon-light-on-orange.svg"> Atom feed</a>
+    {% endif %}
+{% endblock %}

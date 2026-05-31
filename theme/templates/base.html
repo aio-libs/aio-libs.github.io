@@ -1,36 +1,37 @@
 {% extends "!simple/base.html" %}
 
 {% block head %}
-        {{- super() }}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygment.css" />
-        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js" defer></script>
+      {{- super() }}
+      <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+      <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygment.css" />
+      <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js" defer></script>
 {%- endblock head %}
 
 {% block body %}
     <div class="aio-pattern"></div>
     <main class="aio-wrapper">
         <section class="aio-nav">
-        {% block header %}{{ super() }}{% endblock header %}
+        {% block header %}
+          <h1 class="aio-nav__title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>{% if SITESUBTITLE %}<p class="aio-nav__subtitle">{{ SITESUBTITLE }}</p>{% endif %}
+        {% endblock header %}
         {% block nav %}
-            <ul class="aio-nav__list">
-                {% for p in pages if p.prefix != "projects/" %}
-                    <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
-                {% endfor %}
-            </ul>
+            {% for p in pages if p.prefix != "projects/" %}
+                <a class="aio-nav__list-heading" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a>
+            {% endfor %}
             <a href="/projects" class="aio-nav__list-heading">Projects</a>
-            <ul class="aio-nav__list" aria-label="Projects">
+            <ul class="aio-nav__list aio-nav__list--hide" aria-label="Projects">
                 {% for p in pages if p.prefix == "projects/" %}
                     <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                 {% endfor %}
             </ul>
             <a href="/news" class="aio-nav__list-heading">News</a>
-            <ul class="aio-nav__list" aria-label="News">
+            <ul class="aio-nav__list aio-nav__list--hide" aria-label="News">
                 {% for cat, null in tags %}
                     <li><a class="aio-nav__link" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat }}</a></li>
                 {% endfor %}
             </ul>
 
-            <div id="sponsor-sidebar" class="aio-sponsor-sidebar"></div>
+            <div id="sponsor-sidebar" class="aio-nav__sponsor"></div>
         {% endblock nav %}
         </section>
         <section class="aio-content">
@@ -38,12 +39,10 @@
         </section>
     </main>
 
-    {% block footer %}
-        <footer></footer>
-
+    <footer>
         <template id="template-sponsor-sidebar" data-sponsors='{{ SPONSORS["gold"]|tojson }}'>
-            <p>Featured Sponsor:</p>
+            <p>Sponsored by:</p>
             <a class="aio-sponsor"><img /></a>
         </template>
-    {% endblock footer %}
+    </footer>
 {% endblock body %}
