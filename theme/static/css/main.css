@@ -6,7 +6,7 @@
     --color-button: #f1f1f1;
     --color-button-hover: #dddddd;
     --color-muted: #999999;
-    --color-highlight: ##ffffff;
+    --color-highlight: #ededed;
     --color-highlight-hover: #e2e2e2;
     --color-link: #3c3cf3;
     --color-link-hover: #2929c3;
@@ -25,7 +25,8 @@
         --color-button: #243432;
         --color-button-hover: #234240;
         --color-muted: #999999;
-        --color-highlight: #B0E4CC;
+        --color-highlight: #dedede;
+        --color-highlight-hover: #ffffff;
         --color-link: #CBBBF2;
         --color-link-hover: #a790df;
     }
@@ -293,8 +294,11 @@ address {
     max-width: 160px;
 
     p {
-        margin: 0;
         font-size: .8em;
+    }
+
+    .aio-sponsor {
+        height: 60px;
     }
 }
 
@@ -322,46 +326,42 @@ address {
 }
 
 .aio-sponsor {
-    display: block;
-    padding: .5em;
+    flex-grow: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 1em;
     background-color: var(--color-highlight);
+    border-radius: 1em;
 
     &:hover {
         background-color: var(--color-highlight-hover);
+    }
+
+    img {
+        flex-grow: 1;
+        object-fit : contain;
+        object-position: center;
     }
 }
 
 .aio-sponsors-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1em;
     list-style-type: none;
     margin: 0;
     padding: 0;
-
-    a {
-        flex-grow: 1;
-        display: block;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        padding: 1em;
-
-        &:hover {
-            background-color: var(--color-highlight-hover);
-        }
-    }
 }
 
 .aio-sponsors-list__item {
     flex-grow: 1;
     flex-shrink: 1;
     display: flex;
+    max-width: 500px;
+    max-height: 120px;
     margin: 0;
     padding: 0;
-    background-color: var(--color-highlight);
-    flex-basis: 400px;
-    max-width: 500px;
 }
 
 .aio-post-links {
