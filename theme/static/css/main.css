@@ -210,10 +210,11 @@ address {
 
     .aio-nav__title {
         margin: 0 1em 0 0;
+        width: 100%;
     }
     
     .aio-nav__list-heading {
-        margin: 0 .4em;
+        margin: .2em 0;
     }
 }
 
@@ -242,6 +243,12 @@ address {
     flex-shrink: 0;
 }
 
+.aio-nav__list-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+}
+
 .aio-nav__list {
     margin: 0 0 1.2em 0;
     padding: 0;
@@ -255,9 +262,7 @@ address {
 
 @media screen and (max-width: 767px) {
     .aio-nav__list--hide {
-        li {
-            display: none;
-        }
+        display: none;
     }
 }
 
@@ -298,6 +303,7 @@ address {
     }
 
     .aio-sponsor {
+        margin-top: .6em;
         height: 60px;
     }
 }
