@@ -379,6 +379,9 @@ address {
     padding: .4em 1em;
     background-color: var(--color-button);
     border-radius: .5em;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    font-weight: 400;
 
     &:hover {
         background-color: var(--color-button-hover);
@@ -389,8 +392,20 @@ address {
     }
 }
 
+.aio-tag-list {
+    font-family: var(--font-family-brand);
+    font-size: .9em;
+    color: var(--color-muted);
+
+    li {
+        display: inline-block;
+        margin: 0 .4em 0 0;
+    }
+}
+
 .aio-icon-inline {
     display: inline-block;
+    vertical-align: middle;
     margin: 0 .4em 0 0;
     height: 1.2em;
 }
