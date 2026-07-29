@@ -48,6 +48,7 @@ TIMEZONE = "UTC"
 _SPONSORS_GOLD = (
     ("Tidelift", "https://tidelift.com/"),
     ("Open Home Foundation", "https://www.openhomefoundation.org/"),
+    ("OpenAI", "https://openai.com/"),
 )
 _SPONSORS_SILVER = (
     ("Klaviyo", " https://www.klaviyo.com/"),
