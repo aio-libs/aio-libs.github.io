@@ -7,11 +7,8 @@ Security has always been part of the job, but the last year has seen a run of de
 ## The day-to-day process
 
 Everything starts with the reporting pipeline described in our organisation-wide [security policy](https://github.com/aio-libs/.github/blob/master/SECURITY.md).
-Reports come in through GitHub's private vulnerability reporting (or security@aio-libs.org for those without a GitHub account) and are triaged by the security coordinators.
-Fixes are developed in the advisory's private fork, reviewed, released and backported to the supported release branches, with a CVE requested through GitHub and the reporter credited in the advisory.
-aiohttp alone has published [40 advisories](https://github.com/aio-libs/aiohttp/security/advisories) this way since 2021.
-
-Severity is rated by demonstrated attacker impact, and the response scales with it: every advisory feeds the CVE databases, higher-severity issues are also announced on the oss-security mailing list, and the most serious get an embargoed pre-notification to the private linux-distros list ahead of release, so that distributions can prepare updates.
+We typically receive several reports per month and try to act on them promptly.
+You can read how we handle these reports in our [incident response plan](https://docs.aiohttp.org/en/stable/contributing-admins.html#incident-response).
 
 On the supply-chain side, releases are published with PyPI trusted publishing (so there are no long-lived tokens to steal) and signed with [Sigstore](https://www.sigstore.dev/), CodeQL and Dependabot run on the repositories, and aiohttp's parsers have been fuzzed continuously by [OSS-Fuzz](https://github.com/google/oss-fuzz/tree/master/projects/aiohttp) since 2022.
 
@@ -20,8 +17,8 @@ On the supply-chain side, releases are published with PyPI trusted publishing (s
 In 2025, [NLnet](https://nlnet.nl/) funded development work on aiohttp - [improving the type annotations](https://nlnet.nl/project/Aiohttp-typecheck/) - through the NGI Zero Commons Fund, backed by the European Commission's Next Generation Internet programme.
 NGI Zero grants come with more than money though: projects also get access to [support services](https://nlnet.nl/NGI0/services/), including a professional security audit.
 
-Ours was performed by [Radically Open Security](https://www.radicallyopensecurity.com/) - particular thanks to Thomas Rinsma - and its findings became five CVEs: denial-of-service vectors like resource exhaustion via large payloads and an infinite loop when Python runs with assertions disabled, a brute-forceable path disclosure in static file handling, and parsing discrepancies around Unicode digits.
-The fixes shipped in [aiohttp 3.13.3](https://github.com/aio-libs/aiohttp/releases/tag/v3.13.3) this January, [disclosed in a coordinated batch of eight advisories](https://www.openwall.com/lists/oss-security/2026/01/05/14) together with three issues from independent reporters.
+Ours was performed by [Radically Open Security](https://www.radicallyopensecurity.com/) - particular thanks to Thomas Rinsma - and its findings resulted in five CVEs: denial-of-service vectors like resource exhaustion via large payloads and an infinite loop when Python runs with assertions disabled, a brute-forceable path disclosure in static file handling, and parsing discrepancies around Unicode digits.
+The fixes shipped in [aiohttp 3.13.3](https://github.com/aio-libs/aiohttp/releases/tag/v3.13.3) in January, [disclosed in a coordinated batch of eight advisories](https://www.openwall.com/lists/oss-security/2026/01/05/14) together with three issues from independent reporters.
 Our thanks to NLnet for funding both the audit and the development time spent fixing the findings.
 
 One of those reports is worth calling out explicitly: a high-severity decompression bomb ([CVE-2025-69223](https://github.com/aio-libs/aiohttp/security/advisories/GHSA-6mq8-rvhq-8wgg)), where a tiny compressed message inflates into a huge one when aiohttp decompresses it automatically.
@@ -60,8 +57,6 @@ In June, aiohttp was one of the first projects taken through [Patch the Planet](
 
 Trail of Bits privately reported a cluster of 10 issues (resulting in 8 CVEs) across our client and server code, including cookies that could regain a broader scope after a save and reload, digest credentials that would answer a challenge from the wrong origin, and resource limits that ran only after attacker-controlled buffering.
 All fixes were written, reviewed and merged a couple of days later and shipped in [aiohttp 3.14.1](https://github.com/aio-libs/aiohttp/releases/tag/v3.14.1).
-
-On top of the program itself, OpenAI has since become our third [gold sponsor](/sponsorship/), directly supporting the ongoing maintenance work behind these libraries.
 
 ## Keeping it going
 
