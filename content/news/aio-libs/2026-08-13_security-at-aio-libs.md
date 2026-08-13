@@ -10,6 +10,10 @@ Everything starts with the reporting pipeline described in our organisation-wide
 We typically receive several reports per month and try to act on them promptly.
 You can read how we handle these reports in our [incident response plan](https://docs.aiohttp.org/en/stable/contributing-admins.html#incident-response).
 
+We typically request CVEs for anything that could plausibly affect users, which means we may allocate more CVEs than some similar projects.
+Additionally, aiohttp is a complex project and we must consider security relating to networking, HTTP parsing, general web framework and client code.
+Most similar projects only deal with one of these areas.
+
 On the supply-chain side, releases are published with PyPI trusted publishing (so there are no long-lived tokens to steal) and signed with [Sigstore](https://www.sigstore.dev/), CodeQL and Dependabot run on the repositories, and aiohttp's parsers have been fuzzed continuously by [OSS-Fuzz](https://github.com/google/oss-fuzz/tree/master/projects/aiohttp) since 2022.
 
 ## A security audit, via NLnet
@@ -40,7 +44,7 @@ The [threat model](https://docs.aiohttp.org/en/stable/threat_model.html) is the 
 For each one it records what we trust, what can go wrong, and which mitigations exist or are still wanted - including the mitigations that are the responsibility of applications built on aiohttp, which are explicitly marked as such.
 We're still reviewing and publishing the remaining chapters, but expect to complete this over the next few months.
 It's a living document: our incident-response process now ends with feeding each new advisory back into it.
-This is really important in the age of AI-generated security reports. This is a tool that AI agents can use to verify if their report is actually valid and in scope, reducing the number of false positives getting reported to us.
+This is really important in the age of AI-generated security reports; this is a tool that AI agents can use to verify if their report is actually valid and in scope, reducing the number of false positives getting reported to us.
 
 The [incident response plan](https://docs.aiohttp.org/en/stable/contributing-admins.html#incident-response) writes down what used to be tribal knowledge: severity tiers, the advisory-to-release runbook, the disclosure and notification procedures, and - hopefully never needed - playbooks for a compromised release pipeline, maintainer account or CI.
 
