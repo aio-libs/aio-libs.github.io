@@ -29,11 +29,11 @@ Coordinated disclosure sometimes has to run up the dependency chain as well as d
 
 ## The GitHub Secure Open Source Fund
 
-In April we joined Session 4 of the [GitHub Secure Open Source Fund](https://github.com/open-source/github-secure-open-source-fund), alongside 49 other projects (including friends from the Python world like FastAPI and Starlette).
+In April we joined Session 4 of the [GitHub Secure Open Source Fund](https://github.com/open-source/github-secure-open-source-fund), alongside 49 other projects (including friends from the Python ecosystem).
 The program pairs $10,000 of funding through GitHub Sponsors with a three-week security sprint - threat modeling, secure coding, vulnerability management and AI security, with a curriculum from GitHub Security Lab - and check-ins over the following year.
 
 The funding is welcome, but the bigger value for us was momentum: a structured push, with security experts on hand, to clear a backlog of security process work.
-While we found that we were already doing most of the recommendations covered in program, we still found plenty of things to take our security to the next level.
+While we found that we were already doing most of the recommendations covered in the program, we still found plenty of things to take our security to the next level.
 So far, we have fixed up license files, written an incident response plan and a detailed threat model, plugged a gap in aiohttp's SBOM, and ran an AI-assisted audit over all our codebases.
 
 The [threat model](https://docs.aiohttp.org/en/stable/threat_model.html) is the biggest piece: a STRIDE analysis of aiohttp covering nineteen subsystems, from the HTTP/1 parser through cookies and DNS resolution to the build and release supply chain.
