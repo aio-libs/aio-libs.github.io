@@ -10,7 +10,7 @@ Everything starts with the reporting pipeline described in our organisation-wide
 We typically receive several reports per month and try to act on them promptly.
 You can read how we handle these reports in our [incident response plan](https://docs.aiohttp.org/en/stable/contributing-admins.html#incident-response).
 
-We typically request CVEs for anything that could plausibly affect users, which means we may allocate more CVEs than some similar projects.
+We typically issue CVEs for anything that could plausibly affect users, which means we may allocate more CVEs than some similar projects.
 Additionally, aiohttp is a complex project and we must consider security relating to networking, HTTP parsing, general web framework and client code.
 Most similar projects only deal with one of these areas.
 
