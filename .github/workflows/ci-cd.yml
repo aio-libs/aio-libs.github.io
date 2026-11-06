@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: ["master"]
+  schedule:
+    # Weekly, to catch external links that die between commits.
+    - cron: "38 6 * * 1"
 
 permissions: {}
 
@@ -37,6 +40,28 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: 'output/'
+
+  linkcheck:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: read
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v8
+        with:
+          # The name of artifacts created by `actions/upload-pages-artifact` is always "github-pages"
+          name: github-pages
+          path: 'output/'
+      - name: Untar site artifact
+        run: tar --directory output/ -xvf output/artifact.tar
+      - name: Check for dead links
+        uses: lycheeverse/lychee-action@v2
+        env:
+          # Avoids rate-limiting of github.com links from shared runner IPs.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --no-progress --include-fragments --root-dir "${{ github.workspace }}/output" 'output/**/*.html'
 
   deploy_preview:
     if: "github.event_name == 'pull_request'"
