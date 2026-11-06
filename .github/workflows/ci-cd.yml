@@ -62,7 +62,8 @@ jobs:
           # Avoids rate-limiting of github.com links from shared runner IPs.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: --no-progress --include-fragments --root-dir "${{ github.workspace }}/output" 'output/**/*.html'
+          # openai.com blocks requests from datacenter IPs (403), so can't be checked from CI.
+          args: --no-progress --include-fragments --exclude '^https://openai\.com' --root-dir "${{ github.workspace }}/output" 'output/**/*.html'
       - name: Report dead links in an issue
         # PR failures are already surfaced on the PR itself; report for push/schedule.
         if: failure() && github.event_name != 'pull_request'

@@ -69,11 +69,14 @@ devserver:
 devserver-global:
 	"$(PELICAN)" -lr "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b 0.0.0.0
 
-publish:
+theme/static/css/pygment.css:
+	pygmentize -S default -f html > "$(BASEDIR)/theme/static/css/pygment.css"
+
+publish: theme/static/css/pygment.css
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
 
 linkcheck: publish
-	lychee --no-progress --include-fragments --root-dir "$(OUTPUTDIR)" "$(OUTPUTDIR)/**/*.html"
+	lychee --no-progress --include-fragments --exclude '^https://openai\.com' --root-dir "$(OUTPUTDIR)" "$(OUTPUTDIR)/**/*.html"
 
 
 .PHONY: html help clean regenerate serve serve-global devserver devserver-global publish linkcheck
